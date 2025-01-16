@@ -40,11 +40,13 @@
 .main-content {
   flex: 1;
   background-color: var(--color-background);
+  width: calc(100vw - var(--sidebar-width));
 }
 
 @media (max-width: 768px) {
   .sidebar {
     width: 72px;
+    padding: var(--spacing-xs);
   }
 
   .nav-link span {
@@ -54,5 +56,9 @@
   .nav-link {
     justify-content: center;
     padding: var(--spacing-sm);
+  }
+
+  .nav-link-text {
+    display: none;
   }
 }

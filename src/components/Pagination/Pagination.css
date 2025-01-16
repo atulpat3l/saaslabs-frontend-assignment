@@ -78,3 +78,22 @@
   border-color: #cbd5e1;
   box-shadow: 0 0 0 1px #cbd5e1;
 }
+
+.pagination-button-icon {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .pagination-controls button {
+    display: block;
+    width: 2rem;
+  }
+
+  .pagination-button-text {
+    display: none;
+  }
+
+  .pagination-button-icon {
+    display: block;
+  }
+}

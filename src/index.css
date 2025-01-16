@@ -52,6 +52,11 @@
 
   /* Transitions */
   --transition-all: all 0.2s ease;
+
+  /* Scrollbar */
+  --sb-track-color: var(--color-background);
+  --sb-thumb-color: var(--color-gray-200);
+  --sb-size: 4px;
 }
 
 * {
@@ -69,14 +74,9 @@ body {
   max-height: 100vh;
 }
 
-body {
-  --sb-track-color: var(--color-background);
-  --sb-thumb-color: #2563eb;
-  --sb-size: 8px;
-}
-
 .table-container::-webkit-scrollbar {
   width: var(--sb-size);
+  height: var(--sb-size);
 }
 
 .table-container::-webkit-scrollbar-track {
@@ -87,7 +87,7 @@ body {
 .table-container::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
   border-radius: 4px;
-  border: 1px solid;
+  border: 1px solid white;
 }
 
 @supports not selector(::-webkit-scrollbar) {

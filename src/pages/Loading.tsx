@@ -13,22 +13,20 @@ const Loading = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setDelayedLoading(false);
-    }, 3000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <Table
+    <Table<Project>
       data={data ?? []}
       columns={columns}
       isLoading={delayedLoading || isLoading}
       isError={isError}
       pageSize={5}
       onRetry={refetch}
-    >
-      {(table) => <Pagination table={table} />}
-    </Table>
+    />
   );
 };
 

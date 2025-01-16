@@ -19,20 +19,20 @@ const MainLayout = () => {
       <aside className="sidebar">
         <nav className="sidebar-nav">
           <Link to="/" className={isActive("/")}>
-            <HouseIcon size={20} />
-            Home
+            <HouseIcon size={20} className="nav-link-icon" />
+            <span className="nav-link-text">Home</span>
           </Link>
           <Link to="/loading" className={isActive("/loading")}>
-            <LoaderIcon size={20} />
-            Loading
+            <LoaderIcon size={20} className="nav-link-icon" />
+            <span className="nav-link-text">Loading</span>
           </Link>
           <Link to="/error" className={isActive("/error")}>
-            <AlertCircleIcon size={20} />
-            Error
+            <AlertCircleIcon size={20} className="nav-link-icon" />
+            <span className="nav-link-text">Error</span>
           </Link>
           <Link to="/configurable" className={isActive("/configurable")}>
-            <SettingsIcon size={20} />
-            Configurable
+            <SettingsIcon size={20} className="nav-link-icon" />
+            <span className="nav-link-text">Configurable</span>
           </Link>
         </nav>
       </aside>

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Pagination from "../components/Pagination/Pagination";
 import Table from "../components/Table/Table";
 import { columns } from "../components/Table/tableOptions";
 import { useFetch } from "../hooks/useFetch";
@@ -20,9 +19,7 @@ const Error = () => {
         setInitialError(false);
         refetch();
       }}
-    >
-      {(table) => <Pagination table={table} />}
-    </Table>
+    ></Table>
   );
 };
 

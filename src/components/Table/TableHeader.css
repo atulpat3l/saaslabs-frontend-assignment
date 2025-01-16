@@ -1,13 +1,10 @@
 .table-header {
   display: flex;
   justify-content: space-between;
+  gap: var(--spacing-xs);
   align-items: center;
   padding: var(--spacing-md);
   background: var(--color-gray-50);
-  /* border: 0.5px solid var(--color-border);
-  border-top-left-radius: var(--border-radius-lg);
-  border-top-right-radius: var(--border-radius-lg);
-  border-bottom: none; */
 }
 
 .search-container {
@@ -34,6 +31,12 @@
   background: var(--color-white);
 }
 
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
 .view-button {
   display: flex;
   align-items: center;
@@ -50,6 +53,12 @@
 
 .view-button:hover {
   background: var(--color-gray-100);
+}
+
+.view-button:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
 }
 
 .popover-content {

@@ -12,7 +12,6 @@ const Pagination = ({ table }: PaginationProps) => {
       <div className="pagination-controls">
         <button
           onClick={() => {
-            console.log("hello");
             table.firstPage();
           }}
           disabled={!table.getCanPreviousPage()}

@@ -19,6 +19,7 @@ const Pagination = <T,>({ table }: PaginationProps<T>) => {
           <button
             onClick={() => table.firstPage()}
             disabled={!table.getCanPreviousPage()}
+            aria-label="First page"
           >
             <span className="pagination-button-text">First</span>
             <span className="pagination-button-icon">
@@ -28,6 +29,7 @@ const Pagination = <T,>({ table }: PaginationProps<T>) => {
           <button
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
+            aria-label="Previous page"
           >
             <span className="pagination-button-text">Previous</span>
             <span className="pagination-button-icon">
@@ -45,6 +47,7 @@ const Pagination = <T,>({ table }: PaginationProps<T>) => {
           <button
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
+            aria-label="Next page"
           >
             <span className="pagination-button-text">Next</span>
             <span className="pagination-button-icon">
@@ -54,6 +57,7 @@ const Pagination = <T,>({ table }: PaginationProps<T>) => {
           <button
             onClick={() => table.lastPage()}
             disabled={!table.getCanNextPage()}
+            aria-label="Last page"
           >
             <span className="pagination-button-text">Last</span>
             <span className="pagination-button-icon">

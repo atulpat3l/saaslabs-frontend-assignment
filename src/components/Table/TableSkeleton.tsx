@@ -1,4 +1,8 @@
-const TableSkeleton = () => {
+interface TableSkeletonProps {
+  pageSize?: number;
+}
+
+const TableSkeleton = ({ pageSize = 5 }: TableSkeletonProps) => {
   return (
     <div className="container">
       <div className="table-container">
@@ -13,7 +17,7 @@ const TableSkeleton = () => {
             </tr>
           </thead>
           <tbody>
-            {Array.from({ length: 5 }).map((_, rowIndex) => (
+            {Array.from({ length: pageSize }).map((_, rowIndex) => (
               <tr key={rowIndex}>
                 {Array.from({ length: 3 }).map((_, colIndex) => (
                   <td key={colIndex}>

@@ -9,6 +9,7 @@ import {
 import { ReactNode, useState } from "react";
 import "./Table.css";
 import TableSkeleton from "./TableSkeleton";
+import { RefreshCcwIcon } from "lucide-react";
 
 interface TableProps<T> {
   data: T[];
@@ -17,6 +18,7 @@ interface TableProps<T> {
   isError?: boolean;
   pageSize?: number;
   children?: (table: ReactTable<T>) => ReactNode;
+  onRetry?: () => void;
 }
 
 const Table = <T,>({
@@ -26,6 +28,7 @@ const Table = <T,>({
   isError = false,
   pageSize = 5,
   children,
+  onRetry,
 }: TableProps<T>) => {
   const [pagination, setPagination] = useState({
     pageIndex: 0,
@@ -43,8 +46,18 @@ const Table = <T,>({
     },
   });
 
-  if (isError) return <div>Error</div>;
-  if (isLoading) return <TableSkeleton />;
+  if (isError) {
+    return (
+      <div className="error-container">
+        <span className="error-message">Error fetching table data</span>
+        <button onClick={onRetry} className="retry-button">
+          <RefreshCcwIcon size={16} /> Retry
+        </button>
+      </div>
+    );
+  }
+
+  if (isLoading) return <TableSkeleton pageSize={pageSize} />;
 
   return (
     <div className="container">

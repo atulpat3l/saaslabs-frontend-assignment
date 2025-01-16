@@ -5,6 +5,7 @@ interface UseFetchState<T> {
   isLoading: boolean;
   isError: boolean;
   error: Error | null;
+  refetch: () => void;
 }
 
 export function useFetch<T>(url: string) {
@@ -13,6 +14,7 @@ export function useFetch<T>(url: string) {
     isLoading: true,
     isError: false,
     error: null,
+    refetch: () => {},
   });
 
   useEffect(() => {
@@ -28,6 +30,7 @@ export function useFetch<T>(url: string) {
           isLoading: false,
           isError: false,
           error: null,
+          refetch: () => fetchData(),
         });
       } catch (error) {
         setState({
@@ -35,6 +38,7 @@ export function useFetch<T>(url: string) {
           isLoading: false,
           isError: true,
           error: error as Error,
+          refetch: () => fetchData(),
         });
       }
     };

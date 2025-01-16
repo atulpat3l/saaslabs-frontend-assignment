@@ -6,6 +6,7 @@ import {
   LoaderIcon,
   SettingsIcon,
 } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 
 const MainLayout = () => {
   const location = useLocation();
@@ -47,6 +48,7 @@ const MainLayout = () => {
       <main className="main-content">
         <Outlet />
       </main>
+      <Analytics />
     </div>
   );
 };

@@ -3,7 +3,6 @@ import { columns } from "../components/Table/tableOptions";
 import { useFetch } from "../hooks/useFetch";
 import { Project } from "../types/project.types";
 import { API_URL } from "../utils/constants";
-import Pagination from "../components/Pagination/Pagination";
 import { useEffect, useState } from "react";
 
 const Loading = () => {

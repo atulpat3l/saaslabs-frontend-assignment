@@ -2,7 +2,7 @@ import { ListFilterIcon, SearchIcon } from "lucide-react";
 import * as Popover from "@radix-ui/react-popover";
 import "./TableHeader.css";
 
-interface TableHeaderProps<T> {
+interface TableHeaderProps {
   onSearch: (value: string) => void;
   columns: {
     id: string;
@@ -12,7 +12,7 @@ interface TableHeaderProps<T> {
   }[];
 }
 
-const TableHeader = <T,>({ onSearch, columns }: TableHeaderProps<T>) => {
+const TableHeader = ({ onSearch, columns }: TableHeaderProps) => {
   return (
     <div className="table-header">
       <div className="search-container">

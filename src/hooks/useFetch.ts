@@ -3,14 +3,16 @@ import { useState, useEffect } from "react";
 interface UseFetchState<T> {
   data: T | null;
   isLoading: boolean;
-  isError: Error | null;
+  isError: boolean;
+  error: Error | null;
 }
 
 export function useFetch<T>(url: string) {
   const [state, setState] = useState<UseFetchState<T>>({
     data: null,
     isLoading: true,
-    isError: null,
+    isError: false,
+    error: null,
   });
 
   useEffect(() => {
@@ -24,14 +26,15 @@ export function useFetch<T>(url: string) {
         setState({
           data: json,
           isLoading: false,
-          isError: null,
+          isError: false,
+          error: null,
         });
       } catch (error) {
         setState({
           data: null,
           isLoading: false,
-          isError:
-            error instanceof Error ? error : new Error("An error occurred"),
+          isError: true,
+          error: error as Error,
         });
       }
     };

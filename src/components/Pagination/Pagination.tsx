@@ -1,19 +1,16 @@
 import { Table } from "@tanstack/react-table";
-import { Project } from "../../types/project.types";
 import "./Pagination.css";
 
-interface PaginationProps {
-  table: Table<Project>;
+interface PaginationProps<T> {
+  table: Table<T>;
 }
 
-const Pagination = ({ table }: PaginationProps) => {
+const Pagination = <T,>({ table }: PaginationProps<T>) => {
   return (
     <div className="pagination">
       <div className="pagination-controls">
         <button
-          onClick={() => {
-            table.firstPage();
-          }}
+          onClick={() => table.firstPage()}
           disabled={!table.getCanPreviousPage()}
         >
           First
@@ -31,10 +28,7 @@ const Pagination = ({ table }: PaginationProps) => {
         </span>
 
         <button
-          onClick={() => {
-            console.log("next");
-            table.nextPage();
-          }}
+          onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
           Next
@@ -46,19 +40,6 @@ const Pagination = ({ table }: PaginationProps) => {
           Last
         </button>
       </div>
-
-      {/* <div className="page-size">
-        <select
-          value={table.getState().pagination.pageSize}
-          onChange={(e) => table.setPageSize(Number(e.target.value))}
-        >
-          {[5, 10, 20, 30, 40, 50].map((size) => (
-            <option key={size} value={size}>
-              Show {size}
-            </option>
-          ))}
-        </select>
-      </div> */}
     </div>
   );
 };

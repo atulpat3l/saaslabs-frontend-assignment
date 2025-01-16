@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .table-container {
@@ -59,4 +59,44 @@ tbody tr {
 
 tbody tr:hover {
   background-color: var(--color-gray-50);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton-header,
+.skeleton-cell,
+.skeleton-button {
+  background: linear-gradient(
+    90deg,
+    var(--color-gray-100) 25%,
+    var(--color-gray-200) 37%,
+    var(--color-gray-100) 63%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+.skeleton-header {
+  height: 1.25rem;
+  width: 80%;
+  border-radius: var(--border-radius-md);
+}
+
+.skeleton-cell {
+  height: 1rem;
+  width: 70%;
+  border-radius: var(--border-radius-md);
+}
+
+.skeleton-button {
+  width: 5rem;
+  height: 2rem;
+  border-radius: var(--border-radius-md);
 }

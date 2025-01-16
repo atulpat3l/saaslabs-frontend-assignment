@@ -95,5 +95,12 @@
 
   .pagination-button-icon {
     display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .page-info-text {
+    display: none;
   }
 }

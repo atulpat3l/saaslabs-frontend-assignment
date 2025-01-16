@@ -37,8 +37,8 @@ const Pagination = <T,>({ table }: PaginationProps<T>) => {
         </div>
 
         <div className="page-info">
-          Page {table.getState().pagination.pageIndex + 1} of{" "}
-          {table.getPageCount()}
+          <span className="page-info-text">Page</span>{" "}
+          {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </div>
 
         <div className="controls-button">

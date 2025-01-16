@@ -39,6 +39,20 @@
 
 .main-content {
   flex: 1;
-  padding: var(--spacing-xl);
   background-color: var(--color-background);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 72px;
+  }
+
+  .nav-link span {
+    display: none;
+  }
+
+  .nav-link {
+    justify-content: center;
+    padding: var(--spacing-sm);
+  }
 }

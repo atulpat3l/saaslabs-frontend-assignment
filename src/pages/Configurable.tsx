@@ -13,7 +13,7 @@ const Configurable = () => {
       columns={columns}
       isLoading={isLoading}
       isError={isError}
-      pageSize={5}
+      pageSize={50}
       onRetry={refetch}
       showControls={true}
     />

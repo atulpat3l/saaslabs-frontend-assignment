@@ -5,6 +5,7 @@ import {
   useReactTable,
   ColumnDef,
   getFilteredRowModel,
+  VisibilityState,
 } from "@tanstack/react-table";
 import { ReactNode, useState } from "react";
 import "./Table.css";
@@ -36,7 +37,16 @@ const Table = <T,>({
     pageIndex: 0,
     pageSize,
   });
-  const [columnVisibility, setColumnVisibility] = useState({});
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
+    serialNumber: true,
+    percentageFunded: true,
+    amountPledged: true,
+    backers: false,
+    country: false,
+    currency: false,
+    endTime: false,
+    state: false,
+  });
   const [globalFilter, setGlobalFilter] = useState("");
 
   const table = useReactTable({
@@ -70,18 +80,18 @@ const Table = <T,>({
 
   return (
     <div className="container">
+      {showControls && (
+        <TableHeader
+          onSearch={(value) => table.setGlobalFilter(value)}
+          columns={table.getAllColumns().map((column) => ({
+            id: column.id,
+            label: column.columnDef.header as string,
+            isVisible: column.getIsVisible(),
+            toggle: () => column.toggleVisibility(),
+          }))}
+        />
+      )}
       <div className="table-container">
-        {showControls && (
-          <TableHeader
-            onSearch={(value) => table.setGlobalFilter(value)}
-            columns={table.getAllColumns().map((column) => ({
-              id: column.id,
-              label: column.columnDef.header as string,
-              isVisible: column.getIsVisible(),
-              toggle: () => column.toggleVisibility(),
-            }))}
-          />
-        )}
         <table>
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (

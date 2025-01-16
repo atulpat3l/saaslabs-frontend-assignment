@@ -12,8 +12,31 @@ export const columns = [
     header: "Percentage Funded",
     id: "percentageFunded",
   }),
-  columnHelper.accessor((row) => `$${row["amt.pledged"]}`, {
+  columnHelper.accessor((row) => `${row["amt.pledged"]}`, {
     header: "Amount Pledged",
     id: "amountPledged",
+  }),
+  columnHelper.accessor((row) => row["currency"], {
+    header: "Currency",
+    id: "currency",
+  }),
+  columnHelper.accessor(
+    (row) => `${new Date(row["end.time"]).toLocaleDateString()}`,
+    {
+      header: "End Time",
+      id: "endTime",
+    }
+  ),
+  columnHelper.accessor((row) => row["num.backers"], {
+    header: "Backers",
+    id: "backers",
+  }),
+  columnHelper.accessor((row) => row["state"], {
+    header: "State",
+    id: "state",
+  }),
+  columnHelper.accessor((row) => row["country"], {
+    header: "Country",
+    id: "country",
   }),
 ];

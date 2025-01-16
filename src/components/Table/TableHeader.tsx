@@ -1,4 +1,4 @@
-import { SearchIcon, ViewIcon } from "lucide-react";
+import { ListFilterIcon, SearchIcon } from "lucide-react";
 import * as Popover from "@radix-ui/react-popover";
 import "./TableHeader.css";
 
@@ -27,7 +27,7 @@ const TableHeader = <T,>({ onSearch, columns }: TableHeaderProps<T>) => {
       <Popover.Root>
         <Popover.Trigger asChild>
           <button className="view-button">
-            <ViewIcon size={16} />
+            <ListFilterIcon size={16} />
             View
           </button>
         </Popover.Trigger>

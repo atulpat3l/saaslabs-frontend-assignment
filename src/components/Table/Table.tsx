@@ -4,12 +4,14 @@ import {
   getPaginationRowModel,
   useReactTable,
   ColumnDef,
-  Table as ReactTable,
+  getFilteredRowModel,
 } from "@tanstack/react-table";
 import { ReactNode, useState } from "react";
 import "./Table.css";
 import TableSkeleton from "./TableSkeleton";
 import { RefreshCcwIcon } from "lucide-react";
+import TableHeader from "./TableHeader";
+import Pagination from "../Pagination/Pagination";
 
 interface TableProps<T> {
   data: T[];
@@ -17,8 +19,8 @@ interface TableProps<T> {
   isLoading?: boolean;
   isError?: boolean;
   pageSize?: number;
-  children?: (table: ReactTable<T>) => ReactNode;
   onRetry?: () => void;
+  showControls?: boolean;
 }
 
 const Table = <T,>({
@@ -27,22 +29,29 @@ const Table = <T,>({
   isLoading = false,
   isError = false,
   pageSize = 5,
-  children,
   onRetry,
+  showControls = false,
 }: TableProps<T>) => {
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize,
   });
+  const [columnVisibility, setColumnVisibility] = useState({});
+  const [globalFilter, setGlobalFilter] = useState("");
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     onPaginationChange: setPagination,
+    onColumnVisibilityChange: setColumnVisibility,
+    onGlobalFilterChange: setGlobalFilter,
     state: {
       pagination,
+      columnVisibility,
+      globalFilter,
     },
   });
 
@@ -62,6 +71,17 @@ const Table = <T,>({
   return (
     <div className="container">
       <div className="table-container">
+        {showControls && (
+          <TableHeader
+            onSearch={(value) => table.setGlobalFilter(value)}
+            columns={table.getAllColumns().map((column) => ({
+              id: column.id,
+              label: column.columnDef.header as string,
+              isVisible: column.getIsVisible(),
+              toggle: () => column.toggleVisibility(),
+            }))}
+          />
+        )}
         <table>
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -88,7 +108,7 @@ const Table = <T,>({
           </tbody>
         </table>
       </div>
-      {children && children(table)}
+      <Pagination table={table} />
     </div>
   );
 };
